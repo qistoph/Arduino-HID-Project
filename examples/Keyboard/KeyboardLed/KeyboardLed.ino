@@ -25,11 +25,21 @@ void setup() {
   BootKeyboard.begin();
 }
 
-
 void loop() {
+  static uint16_t lastLeds = 0;
+  uint16_t currLeds = BootKeyboard.getLeds();
+  if(currLeds != lastLeds) {
+    lastLeds = currLeds;
+    Serial.print("LEDs: ");
+    for(uint8_t i=0; i<16; ++i) {
+      Serial.print((currLeds & (1 << (15-i))) > 0, BIN);
+    }
+    Serial.println();
+  }
+
   // Update Led equal to the caps lock state.
   // Keep in mind that on a 16u2 and Arduino Micro HIGH and LOW for TX/RX Leds are inverted.
-  if (BootKeyboard.getLeds() & LED_CAPS_LOCK)
+  if (currLeds & LED_CAPS_LOCK)
     digitalWrite(pinLed, HIGH);
   else
     digitalWrite(pinLed, LOW);
