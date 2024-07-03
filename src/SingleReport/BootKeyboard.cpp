@@ -49,11 +49,11 @@ static const uint8_t _hidReportDescriptorKeyboard[] PROGMEM = {
     0x29, 0xFF,                      /*   USAGE_MAXIMUM (255) */
     0x81, 0x00,                      /*   INPUT (Data,Ary,Abs) */
 
-	/* 5 LEDs for num lock etc, 3 left for advanced, custom usage */
+	/* 15 LEDs for num lock etc */
 	0x05, 0x08,						 /*   USAGE_PAGE (LEDs) */
 	0x19, 0x01,						 /*   USAGE_MINIMUM (Num Lock) */
-	0x29, 0x08,						 /*   USAGE_MAXIMUM (Kana + 3 custom)*/
-	0x95, 0x08,						 /*   REPORT_COUNT (8) */
+	0x29, 0x0f,						 /*   USAGE_MAXIMUM (Surround On)*/
+	0x95, 0x0f,						 /*   REPORT_COUNT (15) */
 	0x75, 0x01,						 /*   REPORT_SIZE (1) */
 	0x91, 0x02,						 /*   OUTPUT (Data,Var,Abs) */
 
@@ -193,7 +193,7 @@ bool BootKeyboard_::setup(USBSetup& setup)
 	return false;
 }
 
-uint8_t BootKeyboard_::getLeds(void){
+uint16_t BootKeyboard_::getLeds(void){
     return leds;
 }
 

@@ -37,7 +37,7 @@ enum KeyboardMods : uint16_t {
 };
 
 // Keyboard Leds
-enum KeyboardLeds : uint8_t {
+enum KeyboardLeds : uint16_t {
     LED_NUM_LOCK        = (1 << 0),
     LED_CAPS_LOCK       = (1 << 1),
     LED_SCROLL_LOCK     = (1 << 2),
@@ -46,6 +46,14 @@ enum KeyboardLeds : uint8_t {
     LED_POWER           = (1 << 5),
     LED_SHIFT           = (1 << 6),
     LED_DO_NOT_DISTURB  = (1 << 7),
+    LED_MUTE            = (1 << 8),
+    LED_TONE_ENABLE     = (1 << 9),
+    LED_HIGH_CUT_FILTER = (1 << 10),
+    LED_LOW_CUT_FILTER  = (1 << 11),
+    LED_EQ_ENABLE       = (1 << 12),
+    LED_SOUND_FIELD_ON  = (1 << 13),
+    LED_SURROUND_ON     = (1 << 14),
+    LED_REPEAT          = (uint16_t)(1 << 15),
 };
 
 #ifndef HID_CUSTOM_LAYOUT

@@ -34,7 +34,7 @@ class BootKeyboard_ : public PluggableUSBModule, public DefaultKeyboardAPI
 {
 public:
     BootKeyboard_(void);
-    uint8_t getLeds(void);
+    uint16_t getLeds(void);
     uint8_t getProtocol(void);
     void wakeupHost(void);
     
@@ -75,7 +75,7 @@ protected:
     uint8_t protocol;
     uint8_t idle;
     
-    uint8_t leds;
+    uint16_t leds;
     
     uint8_t* featureReport;
     int featureLength;
